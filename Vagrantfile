@@ -12,6 +12,9 @@ Vagrant.configure("2") do |config|
     cd /tmp/cinc
     sudo -u vagrant makepkg -si --noconfirm
 
+    # Some linking required for Cinc client to work right
+    ln -s /usr/lib/libcrypt.so.2 /opt/cinc/embedded/lib/libcrypt.so.1
+
     # Make sure cinc-client works
     cinc-client -h
   SHELL
