@@ -1,6 +1,7 @@
 all: package.box
 
 package.box:
+	vagrant box update --box archlinux/archlinux
 	vagrant up --provision
 	vagrant package
 
