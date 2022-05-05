@@ -1,11 +1,14 @@
 all: package.box
 
-VERSION = $(shell date +%Y.%m.%d)-$(shell git rev-parse --short HEAD)
+VERSION := $(shell date +%Y.%m.%d).$(shell cat build)
 
 package.box:
 	vagrant box update --box archlinux/archlinux
 	vagrant up --provision
 	vagrant package
+
+	# Update build version
+	expr $(shell cat build) + 1 | tee build
 
 publish: package.box
 	vagrant cloud publish nickpegg/archlinux-kitchen-cinc ${VERSION} virtualbox package.box
