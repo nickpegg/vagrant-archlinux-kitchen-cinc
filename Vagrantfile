@@ -11,7 +11,7 @@ Vagrant.configure("2") do |config|
     # Accept older SSH keys
     echo "PubkeyAcceptedKeyTypes +ssh-rsa" >> /etc/ssh/sshd_config
 
-    sudo -u vagrant git clone https://aur.archlinux.org/cinc.git /tmp/cinc
+    sudo -u vagrant git clone https://github.com/nickpegg/arch-cinc-client.git /tmp/cinc
     cd /tmp/cinc
     sudo -u vagrant makepkg -si --noconfirm
 
