@@ -8,6 +8,9 @@ Vagrant.configure("2") do |config|
     pacman -Syyu
     pacman --noconfirm -S base-devel git
 
+    # Accept older SSH keys
+    echo "PubkeyAcceptedKeyTypes +ssh-rsa" >> /etc/ssh/sshd_config
+
     sudo -u vagrant git clone https://aur.archlinux.org/cinc.git /tmp/cinc
     cd /tmp/cinc
     sudo -u vagrant makepkg -si --noconfirm
